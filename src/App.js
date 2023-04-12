@@ -1,36 +1,40 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Scoreboard from "./Scoreboard";
+import Cards from "./Cards";
 
 function App() {
-  const [countryCodes, setCountryCodes] = useState([]);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highestScore, setHighestScore] = useState(0);
+  const [countryCodes, setCountryCodes] = useState("fr");
+  const [randomFlag, setRandomFlag] = useState(
+    "https://flagcdn.com/w160/za.png"
+  );
 
   useEffect(() => {
     const fetchCountryCodes = () => {
       fetch("https://flagcdn.com/en/codes.json")
         .then((response) => response.json())
         .then((data) => {
-          setCountryCodes(
-            Object.keys(data).map((e, index) => {
-              return <li key={index}>{e}</li>;
-            })
-          );
-          console.log(Object.keys(data));
+          console.log(data);
+          let numberOfCountries = Object.keys(data).length;
+          let randomNumber = Math.floor(Math.random() * numberOfCountries);
+          setCountryCodes(Object.keys(data)[randomNumber]);
         })
         .catch((error) => console.error(error));
     };
     fetchCountryCodes();
   }, []);
 
+  //Will be used to display country names under flags
+  // function getCountryNames() {
+  //   return Object.values(data);
+  // }
+
   return (
     <div className="App">
-      <h1>Hello, world!</h1>
-      <div>
-        <ol>{countryCodes}</ol>
-      </div>
-      <div>
-        <h2>This is an example code :</h2>
-        <img src="https://flagcdn.com/w160/za.png"></img>
-      </div>
+      <Scoreboard />
+      <Cards />
     </div>
   );
 }
