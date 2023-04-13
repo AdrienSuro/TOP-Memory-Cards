@@ -9,33 +9,29 @@ function App() {
   const [highestScore, setHighestScore] = useState(0);
   const [sixteenCountries, setSixteenCountries] = useState([]);
   const [allCountries, setAllCountries] = useState([]);
-  const [countryCodes, setCountryCodes] = useState("fr");
-  const [randomFlag, setRandomFlag] = useState(
-    "https://flagcdn.com/w160/za.png"
-  );
-  let allCountrycodes = [];
 
   useEffect(() => {
     const fetchCountryCodes = () => {
       fetch("https://flagcdn.com/en/codes.json")
         .then((response) => response.json())
         .then((data) => {
-          let allCountries = [...Object.entries(data)];
-          let shuffledCountries = allCountries.sort(
-            (a, b) => 0.5 - Math.random()
-          );
-          for (let i = 0; i < 16; i++) {
-            sixteenCountries.push(shuffledCountries[i]);
-          }
-          console.log(sixteenCountries);
-          // let numberOfCountries = Object.keys(data).length;
-          // let randomNumber = Math.floor(Math.random() * numberOfCountries);
-          // setCountryCodes(Object.keys(data)[randomNumber]);
+          let getCountries = [...Object.entries(data)];
+          setAllCountries(getCountries);
         })
         .catch((error) => console.error(error));
     };
     fetchCountryCodes();
   }, []);
+
+  function updateCountries() {
+    let shuffledCountries = allCountries.sort((a, b) => 0.5 - Math.random());
+    console.log(shuffledCountries);
+    let sixteenShuffledCountries = [];
+    for (let i = 0; i < 16; i++) {
+      sixteenShuffledCountries.push(shuffledCountries[i]);
+    }
+    setSixteenCountries(sixteenShuffledCountries);
+  }
 
   //Will be used to display country names under flags
   // function getCountryNames() {
@@ -45,7 +41,10 @@ function App() {
   return (
     <div className="App">
       <Scoreboard currentScore={currentScore} highestScore={highestScore} />
-      <Cards sixteenCountries={sixteenCountries} />
+      <Cards
+        sixteenCountries={sixteenCountries}
+        updateCountries={updateCountries}
+      />
     </div>
   );
 }
