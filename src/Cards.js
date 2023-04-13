@@ -6,5 +6,13 @@ export default function Cards(props) {
     props.sixteenCountries
   );
 
-  return <div>Cards</div>;
+  return (
+    <div>
+      <ul>
+        {sixteenCountries.map((e) => (
+          <li>{e[1]}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
