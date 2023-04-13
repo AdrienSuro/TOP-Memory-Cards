@@ -9,6 +9,7 @@ function App() {
   const [highestScore, setHighestScore] = useState(0);
   const [sixteenCountries, setSixteenCountries] = useState([]);
   const [allCountries, setAllCountries] = useState([]);
+  const [clickedCountries, setClickedCountries] = useState([]);
 
   useEffect(() => {
     const fetchCountryCodes = () => {
@@ -33,6 +34,15 @@ function App() {
     setSixteenCountries(sixteenShuffledCountries);
   }
 
+  function onCountryClick(country) {
+    // console.log(clickedCountries);
+    // if (clickedCountries.filter((e) => country === e)) {
+    //   console.log("country already here!");
+    // }
+    setClickedCountries([...clickedCountries, country]);
+    console.log(clickedCountries);
+  }
+
   //Will be used to display country names under flags
   // function getCountryNames() {
   //   return Object.values(data);
@@ -44,6 +54,7 @@ function App() {
       <Cards
         sixteenCountries={sixteenCountries}
         updateCountries={updateCountries}
+        onCountryClick={onCountryClick}
       />
     </div>
   );

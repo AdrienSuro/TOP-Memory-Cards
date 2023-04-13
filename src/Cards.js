@@ -10,13 +10,16 @@ export default function Cards(props) {
   return (
     <div className="cardSpace">
       {props.sixteenCountries.map((country) => (
-        <div>
+        <div
+          className="countryContainer"
+          onClick={() => props.onCountryClick(country[0])}
+        >
           <img
             className="flag"
             src={`https://flagcdn.com/w160/${country[0]}.png`}
             alt=""
           />
-          <p>{country[1]}</p>
+          <p className="countryname">{country[1]}</p>
         </div>
       ))}
 
