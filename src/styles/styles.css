@@ -1,0 +1,16 @@
+
+.cardSpace {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding: 10px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns : repeat(4, 1fr);
+    justify-items: center;
+}
+
+.scoreboardSpace {
+    margin-left: 10vw;
+    margin-right: 10vw;   
+    color: red; 
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Scoreboard from "./Scoreboard";
 import Cards from "./Cards";
+import "./styles/styles.css";
 
 function App() {
   const [currentScore, setCurrentScore] = useState(0);
