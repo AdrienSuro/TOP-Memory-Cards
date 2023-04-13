@@ -7,6 +7,22 @@ export default function Cards(props) {
     props.sixteenCountries
   );
 
+  testarray = [
+    ["cd", "DR CONGO"],
+    ["fr", "FRANCE"],
+  ];
+
+  const list = testarray.map((country) => (
+    <div>
+      <img
+        className="flag"
+        src={`https://flagcdn.com/w160/${country[0]}.png`}
+        alt=""
+      />
+      <p>{country[1]}</p>
+    </div>
+  ));
+
   return (
     <div className="cardSpace">
       <div>
