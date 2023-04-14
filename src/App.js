@@ -24,6 +24,12 @@ function App() {
     fetchCountryCodes();
   }, []);
 
+  useEffect(() => {
+    if (currentScore > highestScore) {
+      setHighestScore(currentScore);
+    }
+  }, [currentScore, highestScore]);
+
   function updateCountries() {
     let shuffledCountries = allCountries.sort((a, b) => 0.5 - Math.random());
     let sixteenShuffledCountries = [];
@@ -38,21 +44,13 @@ function App() {
       console.log("country already here");
       return;
     }
-    // console.log(clickedCountries);
-    // if (clickedCountries.filter((e) => country === e)) {
-    //   console.log("country already here!");
-    // }
     setClickedCountries([...clickedCountries, country]);
+    setCurrentScore(currentScore + 1);
   }
 
   function testLog() {
     console.log(clickedCountries);
   }
-
-  //Will be used to display country names under flags
-  // function getCountryNames() {
-  //   return Object.values(data);
-  // }
 
   return (
     <div className="App">
