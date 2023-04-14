@@ -11,6 +11,7 @@ export default function Cards(props) {
     <div className="cardSpace">
       {props.sixteenCountries.map((country) => (
         <div
+          key={country}
           className="countryContainer"
           onClick={() => props.onCountryClick(country[0])}
         >

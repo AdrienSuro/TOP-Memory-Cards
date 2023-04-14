@@ -26,7 +26,6 @@ function App() {
 
   function updateCountries() {
     let shuffledCountries = allCountries.sort((a, b) => 0.5 - Math.random());
-    console.log(shuffledCountries);
     let sixteenShuffledCountries = [];
     for (let i = 0; i < 16; i++) {
       sixteenShuffledCountries.push(shuffledCountries[i]);
@@ -35,11 +34,18 @@ function App() {
   }
 
   function onCountryClick(country) {
+    if (clickedCountries.includes(country)) {
+      console.log("country already here");
+      return;
+    }
     // console.log(clickedCountries);
     // if (clickedCountries.filter((e) => country === e)) {
     //   console.log("country already here!");
     // }
     setClickedCountries([...clickedCountries, country]);
+  }
+
+  function testLog() {
     console.log(clickedCountries);
   }
 
@@ -50,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={testLog}>Test log</button>
       <Scoreboard currentScore={currentScore} highestScore={highestScore} />
       <Cards
         sixteenCountries={sixteenCountries}
