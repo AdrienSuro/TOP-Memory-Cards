@@ -41,9 +41,7 @@ function App() {
 
   function onCountryClick(country) {
     if (clickedCountries.includes(country)) {
-      console.log("country already here");
       setClickedCountries([]);
-      console.log(clickedCountries);
       setCurrentScore(0);
       updateCountries();
       return;

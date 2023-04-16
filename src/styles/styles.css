@@ -21,6 +21,22 @@
     margin-bottom: 10px;
 }
 
+.scaleImage {
+    animation: scaling-image-animation 1s ease;
+}
+  
+@keyframes scaling-image-animation {
+    0% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
 .countryname {
     margin: auto;
 }

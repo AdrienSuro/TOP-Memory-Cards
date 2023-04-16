@@ -13,7 +13,10 @@ export default function Cards(props) {
         <div
           key={country}
           className="countryContainer"
-          onClick={() => props.onCountryClick(country[0])}
+          onClick={(event) => {
+            console.log(event.target);
+            props.onCountryClick(country[0]);
+          }}
         >
           <img
             className="flag"
