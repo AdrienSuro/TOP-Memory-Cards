@@ -42,19 +42,18 @@ function App() {
   function onCountryClick(country) {
     if (clickedCountries.includes(country)) {
       console.log("country already here");
+      setClickedCountries([]);
+      console.log(clickedCountries);
+      setCurrentScore(0);
+      updateCountries();
       return;
     }
     setClickedCountries([...clickedCountries, country]);
     setCurrentScore(currentScore + 1);
   }
 
-  function testLog() {
-    console.log(clickedCountries);
-  }
-
   return (
     <div className="App">
-      <button onClick={testLog}>Test log</button>
       <Scoreboard currentScore={currentScore} highestScore={highestScore} />
       <Cards
         sixteenCountries={sixteenCountries}
