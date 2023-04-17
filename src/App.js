@@ -30,6 +30,11 @@ function App() {
     }
   }, [currentScore, highestScore]);
 
+  //To-Do to shuffle countries display
+  useEffect(() => {
+    setSixteenCountries(...)
+  }, [clickedCountries]);
+
   function updateCountries() {
     let shuffledCountries = allCountries.sort((a, b) => 0.5 - Math.random());
     let sixteenShuffledCountries = [];
