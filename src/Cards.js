@@ -14,8 +14,9 @@ export default function Cards(props) {
           key={country}
           className="countryContainer"
           onClick={(event) => {
-            console.log(event.target);
-            props.onCountryClick(country[0]);
+            event.currentTarget.setAttribute("class", "scaleImage");
+            console.log(event.currentTarget);
+            setTimeout(() => props.onCountryClick(country[0]), 500);
           }}
         >
           <img

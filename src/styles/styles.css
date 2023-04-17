@@ -22,18 +22,17 @@
 }
 
 .scaleImage {
-    animation: scaling-image-animation 1s ease;
+    animation-duration: 500ms;
+    animation-name: pulse;
+    animation-iteration-count: 1;
 }
-  
-@keyframes scaling-image-animation {
-    0% {
-        opacity: 0.8;
+
+@keyframes pulse {
+    from {
+        transform : scale(1,1);
     }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1.2);
+    to {
+        transform : scale(1.3, 1.3);
     }
 }
 
