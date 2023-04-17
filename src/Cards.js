@@ -16,6 +16,14 @@ export default function Cards(props) {
           onClick={(event) => {
             event.currentTarget.setAttribute("class", "scaleImage");
             console.log(event.currentTarget);
+            setTimeout(() => {
+              [...document.getElementsByClassName("scaleImage")].forEach(
+                (element) => {
+                  element.removeAttribute("class", "scaleImage");
+                  element.setAttribute("class", "countryContainer");
+                }
+              );
+            }, 470);
             setTimeout(() => props.onCountryClick(country[0]), 500);
           }}
         >

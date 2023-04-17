@@ -31,9 +31,9 @@ function App() {
   }, [currentScore, highestScore]);
 
   //To-Do to shuffle countries display
-  useEffect(() => {
-    setSixteenCountries(...)
-  }, [clickedCountries]);
+  // useEffect(() => {
+  //   setSixteenCountries(...)
+  // }, [clickedCountries]);
 
   function updateCountries() {
     let shuffledCountries = allCountries.sort((a, b) => 0.5 - Math.random());
@@ -42,6 +42,10 @@ function App() {
       sixteenShuffledCountries.push(shuffledCountries[i]);
     }
     setSixteenCountries(sixteenShuffledCountries);
+  }
+
+  function shuffleDisplay() {
+    setSixteenCountries(sixteenCountries.sort((a, b) => 0.5 - Math.random()));
   }
 
   function onCountryClick(country) {
@@ -53,6 +57,7 @@ function App() {
     }
     setClickedCountries([...clickedCountries, country]);
     setCurrentScore(currentScore + 1);
+    shuffleDisplay();
   }
 
   return (

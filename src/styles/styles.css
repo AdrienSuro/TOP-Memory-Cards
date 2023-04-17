@@ -22,7 +22,7 @@
 }
 
 .scaleImage {
-    animation-duration: 500ms;
+    animation-duration: 460ms;
     animation-name: pulse;
     animation-iteration-count: 1;
 }
